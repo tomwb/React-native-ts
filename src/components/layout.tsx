@@ -7,8 +7,8 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <SafeAreaView>
-      <StatusBar barStyle="dark-content" />
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar barStyle="light-content" />
       {children}
     </SafeAreaView>
   );

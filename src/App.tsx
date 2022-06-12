@@ -1,13 +1,8 @@
 import React from 'react';
-import { Layout } from './components';
-import Login from './screens/login';
+import Routes from './routes';
 
-const App = () => {
-  return (
-    <Layout>
-      <Login />
-    </Layout>
-  );
+const App: React.FC = () => {
+  return <Routes />;
 };
 
 export default App;
