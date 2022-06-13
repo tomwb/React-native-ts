@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface LooseObject {
+import { User } from './user';
+
+interface LooseObject {
   [key: string]: any;
 }
 
-export interface ValidationErrors {
+interface ValidationErrors {
   success: boolean;
   message?: string;
   errors?: LooseObject;
 }
+
+export type { LooseObject, ValidationErrors, User };

@@ -1,9 +1,10 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Text, View } from 'react-native';
 import { Input } from '../components';
 import { validateLoginForm } from '../validations/auth_validation';
 import { LooseObject } from '../types';
+import { AuthContext } from '../contexts/auth_context';
 
 export interface LoginFormData {
   username: string;
@@ -12,6 +13,7 @@ export interface LoginFormData {
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
+  const { login, me } = useContext(AuthContext);
   const [errors, setErrors] = useState<LooseObject | null>(null);
   const [formData, setFormData] = useState<LoginFormData>({
     username: '',
@@ -27,9 +29,9 @@ const Login: React.FC = () => {
     const validation = await validateLoginForm(formData);
     setErrors(validation.errors || null);
     if (validation.success) {
-      console.log('logou');
+      login(formData);
     }
-  }, [formData]);
+  }, [formData, login]);
 
   let refInputPassword: LooseObject | null = null;
 
@@ -66,6 +68,7 @@ const Login: React.FC = () => {
         title="Esqueci senha"
         onPress={() => navigation.navigate('ForgotPassword' as never)}
       />
+      <Text>{me?.name}</Text>
     </View>
   );
 };

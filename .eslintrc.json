@@ -33,6 +33,7 @@
             }
         ],
         "import/no-unresolved": "error",
+        "react/jsx-no-constructed-context-values": "off",
         "consistent-return": "off",
         "@typescript-eslint/no-empty-interface": "off",
         "no-unused-expressions": "off",
