@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from '../screens/login';
@@ -10,8 +10,16 @@ const Stack = createNativeStackNavigator();
 
 const PublicRoutes: React.FC = () => {
   return (
-    <Layout>
-      <NavigationContainer>
+    <NavigationContainer
+      theme={{
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          background: 'transparent',
+        },
+      }}
+    >
+      <Layout>
         <Stack.Navigator
           initialRouteName="Login"
           screenOptions={{
@@ -21,8 +29,8 @@ const PublicRoutes: React.FC = () => {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         </Stack.Navigator>
-      </NavigationContainer>
-    </Layout>
+      </Layout>
+    </NavigationContainer>
   );
 };
 

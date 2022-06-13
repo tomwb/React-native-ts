@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Text, View } from 'react-native';
-import { Input } from '../components';
+import { Input, Layout } from '../components';
 import { validateLoginForm } from '../validations/auth_validation';
 import { LooseObject } from '../types';
 import { AuthContext } from '../contexts/auth_context';
