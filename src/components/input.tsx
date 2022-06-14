@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput, ReturnKeyTypeOptions } from 'react-native';
+import { ReturnKeyTypeOptions } from 'react-native';
+import { CustomText, CustomView } from '../styles/commons';
+import { CustomTextInput } from '../styles/components';
 import { LooseObject } from '../types';
 
 type InputProps = {
@@ -43,17 +45,18 @@ const Input: React.FC<InputProps> = ({
         }
 
         output = (
-          <TextInput
+          <CustomTextInput
             ref={ref => {
               if (setRef) {
                 setRef(ref);
               }
             }}
+            error={!!errors?.[name]}
             autoCapitalize="none"
             autoCorrect={false}
             {...props}
             onChangeText={onChange}
-            onSubmitEditing={e => {
+            onSubmitEditing={() => {
               if (onSubmitEditing) {
                 onSubmitEditing();
               }
@@ -71,15 +74,19 @@ const Input: React.FC<InputProps> = ({
     if (!error) {
       return null;
     }
-    return <Text>{error.join(', ')}</Text>;
+    return <CustomText color="red">{error.join(', ')}</CustomText>;
   };
 
   return (
-    <View>
-      {label && <Text>{label}</Text>}
+    <CustomView marginBottom="md">
+      {label && (
+        <CustomText size="lg" weight="bold">
+          {label}
+        </CustomText>
+      )}
       {renderInput()}
       {renderError()}
-    </View>
+    </CustomView>
   );
 };
 

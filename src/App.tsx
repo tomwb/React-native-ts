@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from './contexts/auth_context';
 import Routes from './routes';
 import './validations/extend_validation';
-import { Theme } from './styles/common';
+import { Theme } from './styles/theme';
 
 const App: React.FC = () => {
   return (

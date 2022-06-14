@@ -1,10 +1,12 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Text, View } from 'react-native';
-import { Input, Layout } from '../components';
-import { validateLoginForm } from '../validations/auth_validation';
+
 import { LooseObject } from '../types';
+import { validateLoginForm } from '../validations/auth_validation';
 import { AuthContext } from '../contexts/auth_context';
+import { Input, Layout, CustomLink, CustomButton } from '../components';
+import { CustomText, CustomView } from '../styles/commons';
+import { LoginContainerView } from '../styles/screens/login';
 
 export interface LoginFormData {
   username: string;
@@ -36,40 +38,57 @@ const Login: React.FC = () => {
   let refInputPassword: LooseObject | null = null;
 
   return (
-    <View>
-      <Text>Login</Text>
-      <Input
-        name="username"
-        value={formData.username}
-        placeholder="Digite seu email"
-        onChange={value => handleChange('username', value)}
-        errors={errors}
-        onSubmitEditing={() => {
-          if (refInputPassword) {
-            refInputPassword.focus();
-          }
-        }}
-      />
-      <Input
-        name="password"
-        type="password"
-        value={formData.password}
-        placeholder="Digite sua senha"
-        onChange={value => handleChange('password', value)}
-        returnKeyType="send"
-        setRef={ref => {
-          refInputPassword = ref;
-        }}
-        errors={errors}
-        onSubmitEditing={handleSubmit}
-      />
-      <Button onPress={handleSubmit} title="Enviar" />
-      <Button
-        title="Esqueci senha"
-        onPress={() => navigation.navigate('ForgotPassword' as never)}
-      />
-      <Text>{me?.name}</Text>
-    </View>
+    <Layout>
+      <CustomView full justifyContent="center" alignItems="center">
+        <CustomText
+          size="xl"
+          weight="semibold"
+          color="secundary"
+          align="center"
+        >
+          {me?.name}
+        </CustomText>
+        <LoginContainerView>
+          <CustomView marginBottom="xl">
+            <CustomText size="xxxl" weight="black" color="white" align="center">
+              Login
+            </CustomText>
+          </CustomView>
+          <Input
+            name="username"
+            value={formData.username}
+            label="Seu email"
+            placeholder="Digite seu email"
+            onChange={value => handleChange('username', value)}
+            errors={errors}
+            onSubmitEditing={() => {
+              if (refInputPassword) {
+                refInputPassword.focus();
+              }
+            }}
+          />
+          <Input
+            name="password"
+            type="password"
+            value={formData.password}
+            label="Senha"
+            placeholder="Digite sua senha"
+            onChange={value => handleChange('password', value)}
+            returnKeyType="send"
+            setRef={ref => {
+              refInputPassword = ref;
+            }}
+            errors={errors}
+            onSubmitEditing={handleSubmit}
+          />
+          <CustomButton onPress={handleSubmit} text="Enviar" />
+          <CustomLink
+            text="Esqueci senha"
+            onPress={() => navigation.navigate('ForgotPassword' as never)}
+          />
+        </LoginContainerView>
+      </CustomView>
+    </Layout>
   );
 };
 

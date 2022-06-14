@@ -1,18 +1,25 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Layout, CustomLink } from '../components';
+import { CustomView, CustomText } from '../styles/commons';
 
 const ForgotPassword: React.FC = () => {
   const navigation = useNavigation();
 
   return (
-    <View>
-      <Text>esqueci a senha</Text>
-      <Button
-        title="Login"
-        onPress={() => navigation.navigate('Login' as never)}
-      />
-    </View>
+    <Layout>
+      <CustomView full justifyContent="center" alignItems="center">
+        <CustomView marginBottom="xl">
+          <CustomText size="xxxl" weight="black" color="white" align="center">
+            Esqueci a senha
+          </CustomText>
+        </CustomView>
+        <CustomLink
+          text="Login"
+          onPress={() => navigation.navigate('Login' as never)}
+        />
+      </CustomView>
+    </Layout>
   );
 };
 
