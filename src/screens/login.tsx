@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { Image } from 'react-native';
 
 import { LooseObject } from '../types';
 import { validateLoginForm } from '../validations/auth_validation';
@@ -8,6 +9,9 @@ import { Input, Layout, CustomLink, CustomButton } from '../components';
 import { CustomText, CustomView } from '../styles/commons';
 import { LoginContainerView } from '../styles/screens/login';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ImgLogo = require('../assets/images/logo.png');
+
 export interface LoginFormData {
   username: string;
   password: string;
@@ -15,7 +19,7 @@ export interface LoginFormData {
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
-  const { login, me } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const [errors, setErrors] = useState<LooseObject | null>(null);
   const [formData, setFormData] = useState<LoginFormData>({
     username: '',
@@ -40,15 +44,10 @@ const Login: React.FC = () => {
   return (
     <Layout>
       <CustomView full justifyContent="center" alignItems="center">
-        <CustomText
-          size="xl"
-          weight="semibold"
-          color="secundary"
-          align="center"
-        >
-          {me?.name}
-        </CustomText>
         <LoginContainerView>
+          <CustomView marginBottom="xl" alignItems="center">
+            <Image source={ImgLogo} style={{ width: 150, height: 80 }} />
+          </CustomView>
           <CustomView marginBottom="xl">
             <CustomText size="xxxl" weight="black" color="white" align="center">
               Login
@@ -57,8 +56,7 @@ const Login: React.FC = () => {
           <Input
             name="username"
             value={formData.username}
-            label="Seu email"
-            placeholder="Digite seu email"
+            label="Usuário"
             onChange={value => handleChange('username', value)}
             errors={errors}
             onSubmitEditing={() => {
@@ -72,7 +70,6 @@ const Login: React.FC = () => {
             type="password"
             value={formData.password}
             label="Senha"
-            placeholder="Digite sua senha"
             onChange={value => handleChange('password', value)}
             returnKeyType="send"
             setRef={ref => {

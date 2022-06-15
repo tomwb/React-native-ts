@@ -15,10 +15,9 @@ export const CustomButtonTouchableOpacity = styled(TouchableOpacity).attrs(
 )`
   background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 50px;
-  min-height: 62px;
   justify-content: center;
   align-items: center;
-  padding: 10px 50px;
+  padding: 15px 50px;
   margin-bottom: ${({ theme }) => theme.gutter.md};
 
   ${props => {

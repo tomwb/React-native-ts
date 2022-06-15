@@ -24,7 +24,7 @@ export const AuthReducer = (
       break;
     case 'SET_ME':
       nextState.me = action.result.data;
-      nextState.token = action.result.data.token;
+      nextState.token = action.result.token;
       break;
     case 'LOGOUT':
       nextState.me = null;

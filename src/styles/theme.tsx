@@ -31,7 +31,7 @@ export const Theme = {
     sm: '12px',
     md: '24px',
     lg: '32px',
-    xl: '48px',
+    xl: '46px',
   },
   fontSize: {
     xs: '14px',

@@ -10,7 +10,7 @@ type LinkProps = {
 const CustomLink: React.FC<LinkProps> = ({ text, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <CustomText size="lg" weight="semibold" color="secundary" align="center">
+      <CustomText size="md" weight="semibold" color="secundary" align="center">
         {text}
       </CustomText>
     </TouchableOpacity>

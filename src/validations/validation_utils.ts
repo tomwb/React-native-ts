@@ -1,14 +1,23 @@
 import { LooseObject, ValidationErrors } from '../types';
 
 export default {
-  buildErrors: (model: string, error: LooseObject): ValidationErrors => {
+  buildErrors: (
+    error: LooseObject,
+    translations: LooseObject,
+  ): ValidationErrors => {
     const output: LooseObject = {};
     const allErrors: string[] = [];
     error.cause.forEach((item: LooseObject) => {
       if (!output[item.target]) {
         output[item.target] = [];
       }
-      const message = `validations.${model}.${item.target}.${item.rule.name}`;
+      let message = `validations.${item.target}.${item.rule.name}`;
+      if (
+        translations[item.target] &&
+        translations[item.target][item.rule.name]
+      ) {
+        message = translations[item.target][item.rule.name];
+      }
       output[item.target].push(message);
       allErrors.push(message);
     });

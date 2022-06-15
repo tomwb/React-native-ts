@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
+import { ThemeView } from '../styles/commons';
 
 type LayoutProps = {
   children?: React.ReactNode;
@@ -8,8 +9,10 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar barStyle="light-content" />
-      {children}
+      <ThemeView>
+        <StatusBar barStyle="light-content" />
+        {children}
+      </ThemeView>
     </SafeAreaView>
   );
 };

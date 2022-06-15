@@ -12,12 +12,10 @@ type JustifyContentType =
 
 interface CustomViewProps {
   full?: boolean;
-  margin?: GutterType;
   marginTop?: GutterType;
   marginBottom?: GutterType;
   marginLeft?: GutterType;
   marginRight?: GutterType;
-  padding?: GutterType;
   paddingTop?: GutterType;
   paddingBottom?: GutterType;
   paddingLeft?: GutterType;
@@ -28,12 +26,10 @@ interface CustomViewProps {
 
 export const CustomView = styled(View).attrs((props: CustomViewProps) => ({
   full: props.full,
-  margin: props.margin,
   marginTop: props.marginTop,
   marginBottom: props.marginBottom,
   marginLeft: props.marginLeft,
   marginRight: props.marginRight,
-  padding: props.padding,
   paddingTop: props.paddingTop,
   paddingBottom: props.paddingBottom,
   paddingLeft: props.paddingLeft,
@@ -72,16 +68,6 @@ export const CustomView = styled(View).attrs((props: CustomViewProps) => ({
   }};
 
   ${props => {
-    // --------- margin ----------
-    // margin
-    if (props.margin && props.theme.gutter[props.margin]) {
-      return css`
-        margin: ${props.theme.gutter[props.margin]};
-      `;
-    }
-    return null;
-  }};
-  ${props => {
     // margin top
     if (props.marginTop && props.theme.gutter[props.marginTop]) {
       return css`
@@ -118,16 +104,6 @@ export const CustomView = styled(View).attrs((props: CustomViewProps) => ({
     return null;
   }};
 
-  ${props => {
-    // --------- pading ----------
-    // padding
-    if (props.padding && props.theme.gutter[props.padding]) {
-      return css`
-        padding: ${props.theme.gutter[props.padding]};
-      `;
-    }
-    return null;
-  }};
   ${props => {
     // padding top
     if (props.paddingTop && props.theme.gutter[props.paddingTop]) {

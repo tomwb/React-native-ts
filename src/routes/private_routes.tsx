@@ -3,12 +3,13 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Theme } from '../styles/theme';
-import Login from '../screens/login';
-import ForgotPassword from '../screens/forgot_password';
+import Dashboard from '../screens/private/dashboard';
+import Products from '../screens/private/products';
+import Product from '../screens/private/product';
 
 const Stack = createNativeStackNavigator();
 
-const PublicRoutes: React.FC = () => {
+const PrivateRoutes: React.FC = () => {
   return (
     <NavigationContainer
       theme={{
@@ -20,16 +21,21 @@ const PublicRoutes: React.FC = () => {
       }}
     >
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Dashboard"
         screenOptions={{
           headerShown: false,
         }}
       >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Products" component={Products} />
+        <Stack.Screen
+          name="Product"
+          component={Product}
+          initialParams={{ productId: null }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default PublicRoutes;
+export default PrivateRoutes;
