@@ -50,7 +50,7 @@ export const ProductsProvider: React.FC<ReactChildren> = ({ children }) => {
     try {
       // const result = await api.get('/events', params);
       const result: Product[] = [];
-      for (let index = 0; index < 15; index++) {
+      for (let index = 1; index < 15; index++) {
         result.push({
           id: index,
           name: `Produto de teste ${index}`,

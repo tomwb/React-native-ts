@@ -24,16 +24,18 @@ const ProductPage: React.FC = () => {
   return (
     <Layout>
       <ScrollView>
-        <CustomView marginTop="xl">
-          <CustomText size="xxxl" weight="black" color="white" align="center">
-            {data && data.name}
-          </CustomText>
-        </CustomView>
-        <CustomView marginTop="md">
-          <CustomLink
-            text="Voltar"
-            onPress={() => navigation.navigate('Products' as never)}
-          />
+        <CustomView marginTop="xl" grid>
+          <CustomView column="3" justifyContent="center">
+            <CustomLink
+              text="Voltar"
+              onPress={() => navigation.navigate('Products' as never)}
+            />
+          </CustomView>
+          <CustomView column="9">
+            <CustomText size="xxxl" weight="black" color="white" align="center">
+              {data && data.name}
+            </CustomText>
+          </CustomView>
         </CustomView>
       </ScrollView>
     </Layout>

@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import styled, { css } from 'styled-components';
-import { GutterType } from '../theme';
+import { GutterType, ColorsType } from '../theme';
 
 type AlignItemsType = 'center' | 'start' | 'end';
 type JustifyContentType =
@@ -10,8 +10,25 @@ type JustifyContentType =
   | 'space-between'
   | 'space-around';
 
+type ColumnType =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12';
+
 interface CustomViewProps {
   full?: boolean;
+  grid?: boolean;
+  color?: ColorsType;
+  column?: ColumnType;
   marginTop?: GutterType;
   marginBottom?: GutterType;
   marginLeft?: GutterType;
@@ -26,6 +43,9 @@ interface CustomViewProps {
 
 export const CustomView = styled(View).attrs((props: CustomViewProps) => ({
   full: props.full,
+  grid: props.grid,
+  color: props.color,
+  column: props.column,
   marginTop: props.marginTop,
   marginBottom: props.marginBottom,
   marginLeft: props.marginLeft,
@@ -37,6 +57,37 @@ export const CustomView = styled(View).attrs((props: CustomViewProps) => ({
   alignItems: props.alignItems,
   justifyContent: props.justifyContent,
 }))`
+  ${props => {
+    // width
+    if (props.column) {
+      return css`
+        width: ${((parseFloat(props.column) / 12) * 100).toFixed(2)}%;
+      `;
+    }
+    return null;
+  }};
+
+  ${props => {
+    // bg color
+    if (props.color && props.theme.colors[props.color]) {
+      return css`
+        background-color: ${props.theme.colors[props.color]};
+      `;
+    }
+    return null;
+  }};
+
+  ${props => {
+    // grid
+    if (props.grid) {
+      return css`
+        flex-direction: row;
+        flex-wrap: wrap;
+      `;
+    }
+    return null;
+  }};
+
   ${props => {
     // full
     if (props.full) {
