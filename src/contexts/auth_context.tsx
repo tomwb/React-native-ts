@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<ReactChildren> = ({ children }) => {
           result: {
             data: {
               id: 1,
-              name: 'teste de context',
+              name: 'Fulano de tal',
             },
             token,
           },
@@ -59,7 +59,7 @@ export const AuthProvider: React.FC<ReactChildren> = ({ children }) => {
           result: {
             data: {
               id: 1,
-              name: 'teste de context',
+              name: 'Fulano de tal',
             },
             token,
           },

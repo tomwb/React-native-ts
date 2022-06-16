@@ -9,6 +9,13 @@
 
 com o ambiente preparado, basta rotar `npx react-native run-ios` para abrir o emulador e `npm start` na pasta do projeto.
 
+```
+cd ios
+pod install
+
+npm start -- --reset-cache
+```
+
 link de como preparar o ambiente
 https://react-native.rocketseat.dev/ios/macos
 

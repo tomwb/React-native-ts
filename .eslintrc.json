@@ -25,6 +25,7 @@
     ],
     "rules": {
         "import/no-unresolved": "error",
+        "react/no-unstable-nested-components": "off",
         "react/require-default-props": "off",
         "no-plusplus": "off",
         "react/function-component-definition": [
