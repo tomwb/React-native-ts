@@ -49,22 +49,25 @@ export const ProductsProvider: React.FC<ReactChildren> = ({ children }) => {
     dispatch({ type: 'SET_LOADING', loading: true });
     try {
       // const result = await api.get('/events', params);
+      const page = params?.page || 1;
       const result: Product[] = [];
-      for (let index = 1; index < 15; index++) {
-        result.push({
-          id: index,
-          name: `Produto de teste ${index}`,
-        });
+      if (page <= 5) {
+        for (let index = 1; index < 10; index++) {
+          result.push({
+            id: Number(page) * index,
+            name: `Produto de teste ${page}-${index}`,
+          });
+        }
       }
       dispatch({
         type: 'SET_LIST',
         result: {
           data: result,
           paginate: {
-            limit: 15,
-            page: 1,
-            pages: 1,
-            total: 1,
+            limit: 10,
+            page,
+            pages: 3,
+            total: 30,
           },
         },
       });

@@ -28,7 +28,11 @@ export const ProductsReducer = (
       nextState.data = action.result.data;
       break;
     case 'SET_LIST':
-      nextState.list = action.result.data;
+      if (action.result.paginate.page === 1) {
+        nextState.list = action.result.data;
+      } else {
+        nextState.list = [...nextState.list, ...action.result.data];
+      }
       nextState.paginate = action.result.paginate;
       break;
     default:

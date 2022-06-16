@@ -17,7 +17,7 @@ const Routes: React.FC = () => {
     return (
       <ThemeView>
         <CustomView full alignItems="center" justifyContent="center">
-          <ActivityIndicator size="large" color="#ffffff" />
+          <ActivityIndicator animating size="large" color="#ffffff" />
         </CustomView>
       </ThemeView>
     );

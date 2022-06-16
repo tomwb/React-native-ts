@@ -5,6 +5,6 @@ export const ProductBoxView = styled(View)`
   width: 280px;
   background-color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.gutter.md};
-  margin-bottom: ${({ theme }) => theme.gutter.md};
+  margin-bottom: ${({ theme }) => theme.gutter.sm};
   align-self: center;
 `;

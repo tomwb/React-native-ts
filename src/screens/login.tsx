@@ -48,11 +48,6 @@ const Login: React.FC = () => {
           <CustomView marginBottom="xl" alignItems="center">
             <Image source={ImgLogo} style={{ width: 150, height: 80 }} />
           </CustomView>
-          <CustomView marginBottom="xl">
-            <CustomText size="xxxl" weight="black" color="white" align="center">
-              Login
-            </CustomText>
-          </CustomView>
           <Input
             name="username"
             value={formData.username}

@@ -25,7 +25,6 @@ export const AuthProvider: React.FC<ReactChildren> = ({ children }) => {
     dispatch({ type: 'SET_LOADING', loading: true });
     try {
       const token = await AsyncStorage.getItem('@MyApp:token');
-      console.log(token);
       if (token) {
         // const result = await api.post('/login', {
         //   document,
@@ -54,7 +53,6 @@ export const AuthProvider: React.FC<ReactChildren> = ({ children }) => {
         // const result = await api.post('/login', {
         //   document,
         // });
-        console.log(params);
         const token = '123456';
         dispatch({
           type: 'SET_ME',
